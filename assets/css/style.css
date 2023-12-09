@@ -1,12 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bellefair&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap'); */
+
+/* Menetapkan keluarga font yang konsisten */
+body {
+  font-family: italic;
+}
+
+
+/* Elemen spesifik di dalam body bisa mewarisi font ini */
+h1, h2, h3, p, .navbar .logo a, .product-info, footer {
+  font-family: italic;
+  font-weight: bold;
+}
+
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: italic;
 }
+
 
 #html{
   scroll-behavior: smooth;
