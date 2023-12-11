@@ -3,11 +3,12 @@ include("../config/koneksi.php");
 
 $id = (isset($_POST['id'])) ? $_POST['id'] : "";
 $username = (isset($_POST['username'])) ? $_POST['username'] : "";
-$password = (isset($_POST['password'])) ? $_POST['password'] : "";
+$email = (isset($_POST['email'])) ? $_POST['email'] : "";
+$level = (isset($_POST['level'])) ? $_POST['level'] : "";
 
-if (!empty($username) && !empty($password)) {
+if (!empty($username) && !empty($email) && !empty($level)) {
 
-    $stmt = $koneksi->prepare("UPDATE user SET username='$username', password='$password' WHERE id='$id'");
+    $stmt = $koneksi->prepare("UPDATE user SET username='$username', email='$email', level='$level' WHERE id='$id'");
     $query = $stmt->execute();
 
     if (!$query) {

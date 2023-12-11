@@ -69,7 +69,7 @@ include("../config/koneksi.php");
         <div class="container-fluid" <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav d-flex flex-column gap-3 py-3">
             <!-- Semua elemen nav-link menggunakan latar belakang yang sama -->
-            <li class="nav-item" style="background-color: #ede9fe;">
+            <li class="nav-item" style="background-color: #ede9fe; color: grey;">
               <a class="nav-link active fw-bold" aria-current="page" href="dashboard.php">Dashboard</a>
             </li>
 
@@ -78,15 +78,15 @@ include("../config/koneksi.php");
             </li>
 
             <p class="d-inline-flex gap-1">
-              <a data-bs-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="text-decoration: none; color:grey; ">
+              <a data-bs-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample"  style="text-decoration: none; color:grey; font-weight: normal">
                 Produk paket
               </a>
             <div class="collapse" id="collapseExample">
               <li>
-                <a class="nav-link" href="#" style="margin-top: -29px; margin-left: 6px; color: grey">Telkomsel</a>
+                <a class="nav-link" href="products-tekomsel.php" style="margin-top: -29px; margin-left: 6px; color: grey">Telkomsel</a>
               </li>
               <li>
-                <a class="nav-link" href="#" style="margin-top: -11px; margin-left: 6px; color: grey">Axis</a>
+                <a class="nav-link" href="products-axis.php" style="margin-top: -11px; margin-left: 6px; color: grey">Axis</a>
               </li>
               <li>
                 <a class="nav-link" href="#" style="margin-top: -11px; margin-left: 6px; color: grey">XL</a>

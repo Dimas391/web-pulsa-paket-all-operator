@@ -121,6 +121,14 @@ while ($_record = mysqli_fetch_array($query)) {
         color: white;
         border: none;
     }
+
+    .dataTables_wrapper .btn {
+        color: black;
+    }
+
+    .dataTables_wrapper .btn:hover {
+        color: white;
+    }
 </style>
 
 <body>
@@ -158,7 +166,7 @@ while ($_record = mysqli_fetch_array($query)) {
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar -->
-            <div class="col-lg-2 px-0" style="min-height: 200vh; font-size: 20px; margin-top: 60px; background-color: #ede9fe !important;">
+            <div class="col-lg-2 px-0" style="min-height: 90vh; font-size: 20px; margin-top: 60px; background-color: #ede9fe !important;">
                 <div class="container-fluid" <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav d-flex flex-column gap-3 py-3">
                         <!-- Semua elemen nav-link menggunakan latar belakang yang sama -->
@@ -176,22 +184,22 @@ while ($_record = mysqli_fetch_array($query)) {
                             </a>
                         <div class="collapse" id="collapseExample">
                             <li>
-                                <a class="nav-link" href="#" style="margin-top: -29px; margin-left: 6px; color: grey">Telkomsel</a>
+                                <a class="nav-link" href="products-tekomsel.php" style="margin-top: -29px; margin-left: 6px; color: grey">Telkomsel</a>
                             </li>
                             <li>
-                                <a class="nav-link" href="#" style="margin-top: -11px; margin-left: 6px; color: grey">Axis</a>
+                                <a class="nav-link" href="products-axis.php" style="margin-top: -11px; margin-left: 6px; color: grey">Axis</a>
                             </li>
                             <li>
-                                <a class="nav-link" href="#" style="margin-top: -11px; margin-left: 6px; color: grey">XL</a>
+                                <a class="nav-link" href="products-xl.php" style="margin-top: -11px; margin-left: 6px; color: grey">XL</a>
                             </li>
                             <li>
-                                <a class="nav-link" href="#" style="margin-top: -11px; margin-left: 6px; color: grey">Indosat</a>
+                                <a class="nav-link" href="products-indosat.php" style="margin-top: -11px; margin-left: 6px; color: grey">Indosat</a>
                             </li>
                             <li>
-                                <a class="nav-link" href="#" style="margin-top: -11px; margin-left: 6px; color: grey">By.U</a>
+                                <a class="nav-link" href="products-by-u.php" style="margin-top: -11px; margin-left: 6px; color: grey">By.U</a>
                             </li>
                             <li>
-                                <a class="nav-link" href="#" style="margin-top: -11px; margin-left: 6px; color: grey">Smartfren </a>
+                                <a class="nav-link" href="products-smartfren.php" style="margin-top: -11px; margin-left: 6px; color: grey">Smartfren </a>
                             </li>
                         </div>
                         <li class="nav-item" style="color:grey;">
@@ -205,7 +213,7 @@ while ($_record = mysqli_fetch_array($query)) {
             </nav>
 
             <div class="col-lg-10 p-4" style="margin-top: 70px;">
-                <h5>Dashboard</h5>
+                <h5 style="font-weight: bold">HALAMAN USER</h5>
                 <div class="row">
                     <div class="col d-flex justify-content-end mb-3" style="margin-top: 20px; margin-bottom: 20px;">
                         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-top: -10px;">Tambah</button>
@@ -225,7 +233,8 @@ while ($_record = mysqli_fetch_array($query)) {
                                 <tr>
                                     <th scope="col">id</th>
                                     <th scope="col">Nama</th>
-                                    <th scope="col">Password</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Level</th>
                                     <th scope="col">Aksi</th>
                                 </tr>
                             </thead>
@@ -236,7 +245,8 @@ while ($_record = mysqli_fetch_array($query)) {
                                     <tr>
                                         <th align="center" scope="row" width="5%"><?php echo $row['id'] ?></th>
                                         <td width="30%"><?php echo $row['username'] ?></td>
-                                        <td width="30%"><?php echo $row['password'] ?></td>
+                                        <td width="30%"><?php echo $row['email'] ?></td>
+                                        <td width="30%"><?php echo $row['level'] ?></td>
                                         <td width="5%">
                                             <div class="d-flex gap-1">
                                                 <button class="btn btn-info btn-sm">
@@ -270,7 +280,7 @@ while ($_record = mysqli_fetch_array($query)) {
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Data User</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
@@ -279,10 +289,17 @@ while ($_record = mysqli_fetch_array($query)) {
                                             <label for="exampleFormControlInput1" class="form-label">Nama</label>
                                             <input type="text" class="form-control" id="exampleFormControlInput1" name="username">
                                         </div>
-                                        <label for="inputPassword5" class="form-label">Password</label>
-                                        <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock" name="password" required>
-                                        <div id="passwordHelpBlock" class="form-text">
+
+                                        <div class="mb-3">
+                                            <label for="email" class="form-label">Email</label>
+                                            <input type="text" class="form-control" id="exampleFormControlInput1" name="email">
                                         </div>
+
+                                        <div class="mb-3">
+                                            <label for="exampleFormControlInput1" class="form-label">Level</label>
+                                            <input type="text" class="form-control" id="exampleFormControlInput1" name="level">
+                                        </div>
+
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                             <button type="submit" class="btn btn-primary" name="submit">Save changes</button>
@@ -309,9 +326,17 @@ while ($_record = mysqli_fetch_array($query)) {
                                                 <label for="exampleFormControlInput1" class="form-label">Nama</label>
                                                 <input type="text" disabled class="form-control" id="exampleFormControlInput1" name="username" value="<?php echo $row['username'] ?>">
                                             </div>
-                                            <label for="inputPassword5" class="form-label">Password</label>
-                                            <input type="password" disabled id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock" name="password" value="<?php echo $row['password'] ?>>
-                                        <div id=" passwordHelpBlock" class="form-text">
+
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1" class="form-label">Email</label>
+                                                <input type="text" disabled class="form-control" id="exampleFormControlInput1" name="email" value="<?php echo $row['email'] ?>">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1" class="form-label">Level</label>
+                                                <input type="text" disabled class="form-control" id="exampleFormControlInput1" name="level" value="<?php echo $row['level'] ?>">
+                                            </div>
+
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -340,9 +365,17 @@ while ($_record = mysqli_fetch_array($query)) {
                                             <label for="exampleFormControlInput1" class="form-label">Nama</label>
                                             <input type="text" required class="form-control" id="exampleFormControlInput1" name="username" value="<?php echo $row['username'] ?>">
                                         </div>
-                                        <label for="inputPassword5" class="form-label">Password</label>
-                                        <input type="password" required id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock" name="password" value="<?php echo $row['password'] ?>>
-                                        <div id=" passwordHelpBlock" class="form-text">
+
+                                        <div class="mb-3">
+                                            <label for="exampleFormControlInput1" class="form-label">Email</label>
+                                            <input type="text" required class="form-control" id="exampleFormControlInput1" name="email" value="<?php echo $row['email'] ?>">
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="exampleFormControlInput1" class="form-label">Level</label>
+                                            <input type="text" required class="form-control" id="exampleFormControlInput1" name="level" value="<?php echo $row['level'] ?>">
+                                        </div>
+
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CLOSE</button>

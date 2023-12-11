@@ -167,7 +167,7 @@
               <div class="card">
                 <div class="card-body">
                   <h6 class="card-title"><?php echo $row['Nama_produk']; ?></h6>
-                  <h3><?php echo $row['detail']; ?></h3>
+                  <h3><?php echo $row['Keterangan']; ?></h3>
                   <br />
                   <h3 class="akhir">Rp. <?php echo $row['Harga'] ?></h3>
                   <!-- Button trigger modal -->

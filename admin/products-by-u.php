@@ -4,7 +4,7 @@ session_start();
 include("../config/header.php");
 include("../config/koneksi.php");
 
-$query = mysqli_query($koneksi, "SELECT * FROM products_pulsa");
+$query = mysqli_query($koneksi, "SELECT * FROM products_paket_telkomsel");
 while ($_record = mysqli_fetch_array($query)) {
     $result[] = $_record;
 }
@@ -149,31 +149,31 @@ while ($_record = mysqli_fetch_array($query)) {
                         </li>
 
                         <p class="d-inline-flex gap-1">
-                            <a data-bs-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="text-decoration: none; color:grey; font-weight: normal  ">
+                            <a class="nav-link active fw-bold" data-bs-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="text-decoration: none; color:grey; font-weight: normal  ">
                                 Produk paket
                             </a>
                         <div class="collapse" id="collapseExample">
                             <li>
-                                <a class="nav-link" href="#" style="margin-top: -29px; margin-left: 6px; color: grey">Telkomsel</a>
+                                <a class="nav-link" href="products-tekomsel.php" style="margin-top: -29px; margin-left: 6px; color: grey">Telkomsel</a>
                             </li>
                             <li>
-                                <a class="nav-link" href="#" style="margin-top: -11px; margin-left: 6px; color: grey">Axis</a>
+                                <a class="nav-link" href="products-axis.php" style="margin-top: -11px; margin-left: 6px; color: grey">Axis</a>
                             </li>
                             <li>
-                                <a class="nav-link" href="#" style="margin-top: -11px; margin-left: 6px; color: grey">XL</a>
+                                <a class="nav-link" href="products-xl.php" style="margin-top: -11px; margin-left: 6px; color: grey">XL</a>
                             </li>
                             <li>
-                                <a class="nav-link" href="#" style="margin-top: -11px; margin-left: 6px; color: grey">Indosat</a>
+                                <a class="nav-link" href="products-indosat.php" style="margin-top: -11px; margin-left: 6px; color: grey">Indosat</a>
                             </li>
                             <li>
-                                <a class="nav-link" href="#" style="margin-top: -11px; margin-left: 6px; color: grey">By.U</a>
+                                <a class="nav-link active fw-bold" href="products-by-u.php" style="margin-top: -11px; margin-left: 6px; color: grey">By.U</a>
                             </li>
                             <li>
-                                <a class="nav-link" href="#" style="margin-top: -11px; margin-left: 6px; color: grey">Smartfren </a>
+                                <a class="nav-link" href="products-smartfren.php" style="margin-top: -11px; margin-left: 6px; color: grey">Smartfren </a>
                             </li>
                         </div>
                         <li class="nav-item" style="color:grey;">
-                            <a class="nav-link active fw-bold"" href=" pulsa.php">Pulsa</a>
+                            <a class="nav-link" href=" pulsa.php">Pulsa</a>
                         </li>
                         <li class="nav-item" style="color:grey;">
                             <a class="nav-link" href="transaksi.php">Transaksi</a>
@@ -183,7 +183,7 @@ while ($_record = mysqli_fetch_array($query)) {
             </nav>
 
             <div class="col-lg-10 p-4" style="margin-top: 70px;">
-                <h5 style="font-weight: bold">Halaman Products Pulsa</h5>
+                <h5 style="font-weight: bold">Halaman Products Paket By.u/Telkom</h5>
                 <div class="row">
                     <div class="col d-flex justify-content-end mb-3" style="margin-top: 20px; margin-bottom: 20px;">
                         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-top: -10px;">Tambah</button>
@@ -202,9 +202,15 @@ while ($_record = mysqli_fetch_array($query)) {
                             <thead>
                                 <tr>
                                     <th scope="col">id</th>
-                                    <th scope="col">Jenis Pulsa</th>
+                                    <th scope="col">Nama Kartu</th>
+                                    <th scope="col">Nama Produk</th>
+                                    <th scope="col">Kuota Internet</th>
+                                    <th scope="col">Kuota Sosmed</th>
+                                    <th scope="col">Kuota Nelpon</th>
+                                    <th scope="col">Kuota SMS</th>
                                     <th scope="col">Harga</th>
-                                    <th scope="col">Harga Asli</th>
+                                    <th scope="col">Masa Aktif</th>
+                                    <th scope="col">Keterangan</th>
                                     <th scope="col">Aksi</th>
                                 </tr>
                             </thead>
@@ -214,9 +220,15 @@ while ($_record = mysqli_fetch_array($query)) {
                                 ?>
                                     <tr>
                                         <th align="center" scope="row" width="5%"><?php echo $row['id'] ?></th>
-                                        <td width="30%"><?php echo $row['Jenis_pulsa'] ?></td>
-                                        <td width="30%"><?php echo $row['harga'] ?></td>
-                                        <td width="30%"><?php echo $row['harga_asli'] ?></td>
+                                        <td width="30%"><?php echo $row['Nama_Kartu'] ?></td>
+                                        <td width="30%"><?php echo $row['Nama_produk'] ?></td>
+                                        <td width="30%"><?php echo $row['Kuota_Internet'] ?></td>
+                                        <td width="30%"><?php echo $row['Kuota_Sosmed'] ?></td>
+                                        <td width="30%"><?php echo $row['Kuota_Nelpon'] ?></td>
+                                        <td width="30%"><?php echo $row['Kuota_SMS'] ?></td>
+                                        <td width="30%"><?php echo $row['Harga'] ?></td>
+                                        <td width="30%"><?php echo $row['Masa_aktif'] ?></td>
+                                        <td width="30%"><?php echo $row['Keterangan'] ?></td>
                                         <td width="5%">
                                             <div class="d-flex gap-1" style="color: #0000FF;">
                                                 <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal1<?php echo $row['id'] ?>">
@@ -257,24 +269,54 @@ while ($_record = mysqli_fetch_array($query)) {
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Data Pulsa</h1>
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Data Produk Paket By.u</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="proses-input-pulsa.php" method="POST">
+                                <form action="proses-input-by-u.php" method="POST">
                                     <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">Jenis Pulsa</label>
-                                        <input type="text" class="form-control" id="exampleFormControlInput1" name="Jenis_pulsa">
+                                        <label for="exampleFormControlInput1" class="form-label">Nama Kartu</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInput1" name="Nama_Kartu">
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="exampleFormControlInput2" class="form-label">Harga</label>
-                                        <input type="text" class="form-control" id="exampleFormControlInput1" name="harga">
+                                        <label for="exampleFormControlInput2" class="form-label">Nama Poduk</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInput1" name="Nama_produk">
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="exampleFormControlInput3" class="form-label">Harga Asli</label>
-                                        <input type="text" class="form-control" id="exampleFormControlInput1" name="harga_asli">
+                                        <label for="exampleFormControlInput3" class="form-label">Kuota Internet</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInput1" name="Kuota_Internet">
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput3" class="form-label">Kuota Sosmed</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInput1" name="Kuota_Sosmed">
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput3" class="form-label">Kuota Nelpon</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInput1" name="Kuota_Nelpon">
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput3" class="form-label">Kuota SMS</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInput1" name="Kuota_SMS">
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput3" class="form-label">Harga</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInput1" name="Harga">
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput3" class="form-label">Masa Aktif</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInput1" name="Masa_aktif">
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput3" class="form-label">Keterangan</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInput1" name="Keterangan">
                                     </div>
 
                                     <div class="modal-footer" style="margin-top: 32px;">
@@ -294,24 +336,54 @@ while ($_record = mysqli_fetch_array($query)) {
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Detail data pulsa</h1>
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Detail data Produk By.u</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="proses-input-pengguna.php" method="POST">
+                                    <form action="proses-input-by-u.php" method="POST">
                                         <div class="mb-3">
-                                            <label for="exampleFormControlInput1" class="form-label">Jenis Pulsa</label>
-                                            <input type="text" disabled class="form-control" id="exampleFormControlInput1" name="Jenis_pulsa" value="<?php echo $row['Jenis_pulsa'] ?>">
+                                            <label for="exampleFormControlInput1" class="form-label">Nama Kartu</label>
+                                            <input type="text" class="form-control" id="exampleFormControlInput1" name="Nama_Kartu" value="<?php echo $row['Nama_Kartu']; ?>" disabled>
                                         </div>
 
                                         <div class="mb-3">
-                                            <label for="exampleFormControlInput1" class="form-label">Harga Asli</label>
-                                            <input type="text" disabled class="form-control" id="exampleFormControlInput1" name="harga_asli" value="<?php echo $row['harga_asli'] ?>">
+                                            <label for="exampleFormControlInput2" class="form-label">Nama Poduk</label>
+                                            <input type="text" class="form-control" id="exampleFormControlInput1" name="Nama_produk" value="<?php echo $row['Nama_produk']; ?>" disabled>
                                         </div>
 
                                         <div class="mb-3">
-                                            <label for="exampleFormControlInput1" class="form-label">Harga</label>
-                                            <input type="text" disabled class="form-control" id="exampleFormControlInput1" name="harga" value="<?php echo $row['harga'] ?>">
+                                            <label for="exampleFormControlInput3" class="form-label">Kuota Internet</label>
+                                            <input type="text" class="form-control" id="exampleFormControlInput1" name="Kuota_Internet" value="<?php echo $row['Kuota_Internet']; ?>" disabled>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="exampleFormControlInput3" class="form-label">Kuota Sosmed</label>
+                                            <input type="text" class="form-control" id="exampleFormControlInput1" name="Kuota_Sosmed" value="<?php echo $row['Kuota_Sosmed']; ?>" disabled>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="exampleFormControlInput3" class="form-label">Kuota Nelpon</label>
+                                            <input type="text" class="form-control" id="exampleFormControlInput1" name="Kuota_Nelpon" value="<?php echo $row['Kuota_Nelpon']; ?>" disabled>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="exampleFormControlInput3" class="form-label">Kuota SMS</label>
+                                            <input type="text" class="form-control" id="exampleFormControlInput1" name="Kuota_SMS" value="<?php echo $row['Kuota_SMS']; ?>" disabled>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="exampleFormControlInput3" class="form-label">Harga</label>
+                                            <input type="text" class="form-control" id="exampleFormControlInput1" name="Harga" value="<?php echo $row['Harga']; ?>" disabled>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="exampleFormControlInput3" class="form-label">Masa Aktif</label>
+                                            <input type="text" class="form-control" id="exampleFormControlInput1" name="Masa_aktif" value="<?php echo $row['Masa_aktif']; ?>" disabled>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="exampleFormControlInput3" class="form-label">Keterangan</label>
+                                            <input type="text" class="form-control" id="exampleFormControlInput1" name="Keterangan" value="<?php echo $row['Keterangan']; ?>" disabled>
                                         </div>
 
                                         <div class="modal-footer">
@@ -332,25 +404,58 @@ while ($_record = mysqli_fetch_array($query)) {
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Update Data User</h1>
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Update Data Produk By.u</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form action="proses-update-pulsa.php" method="POST">
+                            <form action="proses-update-by-u.php" method="POST">
                                 <input type="hidden" value="<?php echo $row['id'] ?>" name="id">
                                 <div class="mb-3">
-                                    <label for="jenisPulsa" class="form-label">Jenis Pulsa</label>
-                                    <input type="text" required class="form-control" id="jenisPulsa" name="Jenis_pulsa" value="<?php echo $row['Jenis_pulsa'] ?>">
+                                    <label for="exampleFormControlInput1" class="form-label">Nama Kartu</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" name="Nama_Kartu" value="<?php echo $row['Nama_Kartu']; ?>">
                                 </div>
+
                                 <div class="mb-3">
-                                    <label for="hargaAsli" class="form-label">Harga Asli</label>
-                                    <input type="text" required class="form-control" id="hargaAsli" name="harga_asli" value="<?php echo $row['harga_asli'] ?>">
+                                    <label for="exampleFormControlInput2" class="form-label">Nama Poduk</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" name="Nama_produk" value="<?php echo $row['Nama_produk']; ?>">
                                 </div>
+
                                 <div class="mb-3">
-                                    <label for="harga" class="form-label">Harga</label>
-                                    <input type="text" required class="form-control" id="harga" name="harga" value="<?php echo $row['harga'] ?>">
+                                    <label for="exampleFormControlInput3" class="form-label">Kuota Internet</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" name="Kuota_Internet" value="<?php echo $row['Kuota_Internet']; ?>">
                                 </div>
-                                <div class="modal-footer">
+
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput3" class="form-label">Kuota Sosmed</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" name="Kuota_Sosmed" value="<?php echo $row['Kuota_Sosmed']; ?>">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput3" class="form-label">Kuota Nelpon</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" name="Kuota_Nelpon" value="<?php echo $row['Kuota_Nelpon']; ?>">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput3" class="form-label">Kuota SMS</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" name="Kuota_SMS" value="<?php echo $row['Kuota_SMS']; ?>">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput3" class="form-label">Harga</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" name="Harga" value="<?php echo $row['Harga']; ?>">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput3" class="form-label">Masa Aktif</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" name="Masa_aktif" value="<?php echo $row['Masa_aktif']; ?>">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput3" class="form-label">Keterangan</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" name="Keterangan" value="<?php echo $row['Keterangan']; ?>">
+                                </div>
+
+                                <div class="modal-footer" style="margin-top: 32px;">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                     <button type="submit" class="btn btn-primary" name="submit">Update</button>
                                 </div>
@@ -369,14 +474,14 @@ while ($_record = mysqli_fetch_array($query)) {
                 <div class="modal-dialog modal-md">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Update Data User</h1>
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Hapus Data Produk By.u</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form action="proses-delete-pulsa.php" method="POST">
+                            <form action="proses-delete-BY-U.php" method="POST">
                                 <input type="hidden" value="<?php echo $row['id'] ?>" name="id">
                                 <div class="col-lg-12">
-                                    apakah anda yakin ingin menghapus data user <b><?php echo $row['Jenis_pulsa'] ?></b>
+                                    apakah anda yakin ingin menghapus data produk by.u atau telkom <b><?php echo $row['Nama_produk'] ?></b>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CLOSE</button>
