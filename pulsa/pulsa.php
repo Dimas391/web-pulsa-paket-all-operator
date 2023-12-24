@@ -3,6 +3,10 @@
   include("../config/koneksi.php");
   include("../config/header.php");
 
+  if (!isset($_SESSION['login'])) {
+    header("location: ../auth/login.php");
+    exit;
+  }
   ?>
 
   <!DOCTYPE html>
@@ -115,9 +119,9 @@
               </ul>
             </li>
             <li>
-              <a href="../promo/promo.html" style="font-family: italic">Promo</a>
+              <a href="../promo/promo.php" style="font-family: italic">Promo</a>
             </li>
-            <li><a href="bantuan/bantuan.php" style="font-family: italic">Bantuan</a></li>
+            <li><a href="../bantuan/bantuan.php" style="font-family: italic">Bantuan</a></li>
             <li><a href="#"></a></li>
           </ul>
         </div>
@@ -131,9 +135,8 @@
             <?= $username ?>
           </button>
           <ul class="dropdown-menu dropdown-menu-end">
-            <li><a class="dropdown-item" href="#" style="font-family: italic">Profile</a></li>
+            <li><a class="dropdown-item" href="../auth/profil.php" style="font-family: italic">Ganti Password</a></li>
             <li><a class="dropdown-item" href="../auth/logout.php" style="font-family: italic">Logout</a></li>
-            <li><a class="dropdown-item" href="#" style="font-family: italic">Something else here</a></li>
             <li>
               <hr class="dropdown-divider">
             </li>
@@ -147,7 +150,7 @@
           </div>
         </div>
         <div class="keranjang">
-          <a href="../keranjang/keranjang.php"><i class="fas fa-cart-shopping" style="color: black;"></i></a>
+          <a href="../Pembayaran/pembayaran.php"><i class="fas fa-cart-shopping" style="color: black;"></i></a>
         </div>
       </div>
     </nav>
@@ -298,50 +301,39 @@
 
       </div>
 
-      <?php foreach ($rows as $row) { ?>
+      <?php foreach ($result as $row) { ?>
         <div class="modal fade" id="exampleModal<?php echo $row['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-
           <div class="modal-dialog">
-
             <div class="modal-content">
               <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel"><?php echo $row['Jenis_pulsa']; ?></h1>
+                <h1 class="modal-title fs-5" id="Jenis_pulsa" name="Jenis_pulsa"><?php echo $row['Jenis_pulsa']; ?></h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-
               <div class="modal-body">
-              <div class=" align-items-center">
-                <div class="col-auto">
-                  <input type="text" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline" placeholder="Masukkan No Hp Anda">
-                </div>
-              </div>
-
-                <select class="form-select" aria-label="Default select example" style="margin-top: 10px">
-                  <option selected>Pilih Metode Pembayaran</option>
-                  <option value="1">DANA</option>
-                  <option value="2">GOPAY</option>
-                  <option value="3">Shopee Pay</option>
-                  <option value="3">OVO</option>
-                  <option value="3">Shopee Pay</option>
-                  <option value="3">VA BNI</option>
-                  <option value="3">VA BCA</option>
-                  <option value="3">VA BRI</option>
-                  <option value="3">Shopee Mandiri</option>
-                </select>
-
-                <p class="card-text" style="margin-top: 10px">
-                  <b>Rp. <?php echo $row['harga']; ?></b><br />
-                </p>
+                <form action="../Pembayaran/proses-pembayaran.php" method="POST">
+                  <?php
+                  $id = $row['id'];
+                  $query_penjualan = "SELECT No_Telepon FROM penjualan WHERE id = $id";
+                  $result_penjualan = mysqli_query($koneksi, $query_penjualan);
+                  $penjualan = mysqli_fetch_assoc($result_penjualan);
+                  ?>
+                  <input type="hidden" value="<?php echo $row['id'] ?>" name="id">
+                  <div class=" align-items-center">
+                    <div class="col-auto">
+                      <input type="text" id="No_Telepon" name="No_Telepon" class="form-control" placeholder="Masukkan No Hp Anda" required>
+                    </div>
+                  </div>
+                  <p class="card-text" id="harga" style="margin-top: 10px" name="harga">
+                    <b>Rp. <?php echo $row['harga']; ?></b><br />
+                  </p>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                <button type="button" class="btn btn-primary">Beli Langsung</button>
+                <button type="submit" class="btn btn-primary">Beli</button>
               </div>
-
+              </form>
             </div>
-
           </div>
-
         </div>
       <?php } ?>
       </div>
@@ -479,9 +471,36 @@
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
       AOS.init();
     </script>
   </body>
 
   </html>
+
+  <script>
+    function handlePurchase(productId) {
+      // Lakukan apa yang diperlukan saat tombol Beli Langsung ditekan
+      // Misalnya, Anda bisa lakukan operasi AJAX untuk mengirim data pembelian ke server
+      // atau melakukan redirect ke halaman proses pembayaran dengan mengirimkan ID produk tertentu.
+
+      // Contoh operasi AJAX sederhana
+      $.ajax({
+        url: 'proses-pembayaran.php', // URL ke file proses-pembayaran.php
+        method: 'POST',
+        data: {
+          productId: productId,
+          nomor_hp: $('#nomor_hp').val()
+        }, // Data yang ingin dikirim ke server
+        success: function(response) {
+          // Handle respons dari server jika diperlukan
+          console.log(response);
+        },
+        error: function(xhr, status, error) {
+          // Handle error jika ada kesalahan saat melakukan operasi AJAX
+          console.error(error);
+        }
+      });
+    }
+  </script>

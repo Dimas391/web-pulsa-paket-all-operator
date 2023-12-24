@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 11, 2023 at 10:24 AM
+-- Generation Time: Dec 24, 2023 at 08:44 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -20,6 +20,23 @@ SET time_zone = "+00:00";
 --
 -- Database: `paket`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `penjualan`
+--
+
+CREATE TABLE `penjualan` (
+  `id_penjualan` int(5) NOT NULL,
+  `id` int(5) DEFAULT NULL,
+  `id_paket_telkomsel` int(6) DEFAULT NULL,
+  `id_paket_axis` int(5) DEFAULT NULL,
+  `id_paket_indosat` int(5) DEFAULT NULL,
+  `id_paket_xl` int(5) DEFAULT NULL,
+  `id_paket_smartfren` int(5) DEFAULT NULL,
+  `No_Telepon` varchar(288) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -150,7 +167,7 @@ INSERT INTO `products_paket_smartfren` (`id`, `Nama_kartu`, `Nama_produk`, `Kuot
 --
 
 CREATE TABLE `products_paket_telkomsel` (
-  `id` int(5) NOT NULL,
+  `id` int(6) NOT NULL,
   `Nama_Kartu` varchar(288) NOT NULL,
   `Nama_produk` varchar(258) NOT NULL,
   `Kuota_Internet` varchar(258) NOT NULL,
@@ -169,7 +186,7 @@ CREATE TABLE `products_paket_telkomsel` (
 INSERT INTO `products_paket_telkomsel` (`id`, `Nama_Kartu`, `Nama_produk`, `Kuota_Internet`, `Kuota_Sosmed`, `Kuota_Nelpon`, `Kuota_SMS`, `Harga`, `Masa_aktif`, `Keterangan`) VALUES
 (3, 'Telkomsel', 'Combo Sakti 32 GB', 'Internet22 GB', 'Sosmed10 GB', 'Nelpon700 Menit', 'SMS500 sms', 98000, '30 Hari', '32 GB | 30 hari'),
 (4, 'Telkomsel', 'Combo Sakti 45 GB', 'Internet30 GB', 'Sosmed15 GB ', 'Nelpon1000 Menit', 'SMS1000 sms', 120000, '30 Hari', '45 GB | 30 hari'),
-(5, 'Telkomsel 14 GB', 'Internet Malam 5 GB', 'Internet Malam 5 GB', '-', '-', '-', 7000, '3 Hari', '5 GB | 3 hari'),
+(5, 'Telkomsel ', 'Internet Malam 5 GB', 'Internet Malam 5 GB', '-', '-', '-', 7000, '3 Hari', '5 GB | 3 hari'),
 (6, 'Telkomsel', 'Internet Malam 5 GB', 'Internet Malam 5 GB', '-', '-', '-', 13000, '7 Hari', '5 GB | 7 hari'),
 (7, 'Telkomsel ', 'Internet Malam 10 GB', '10 GB | 7 hari', '-', '-', '-', 18000, '7 hari', '10 GB | 7 hari'),
 (8, 'Telkomsel', 'Internet Malam 10 GB', 'Internet Malam 10 GB', '-', '-', '-', 20000, '15 hari', '10 GB | 15 hari\r\n'),
@@ -247,81 +264,112 @@ INSERT INTO `products_pulsa` (`id`, `Jenis_pulsa`, `harga`, `image`, `harga_asli
 (5, 'Pulsa Axis 50000', '55000', '', '60000', 'hanya'),
 (6, 'Pulsa Indosat 40000', '45000', '', '60000', 'hanya'),
 (7, 'Pulsa XL 20000', '22000', '', '25000', 'hanya'),
-(9, 'Telkomsel 5000', '5.000', '', 'Rp.6000', ''),
-(10, 'Telkomsel', '10.000', '', 'Rp. 11.500', ''),
-(11, 'Telkomsel', '15.000', '', 'Rp. 16.500', ''),
-(12, 'Telkomsel', '20.000', '', 'Rp. 21.000', ''),
-(13, 'Telkomsel', '25.000', '', 'Rp. 25000', ''),
-(15, 'Telkomsel', '40.000', '', 'Rp. 40.000', ''),
-(16, 'Telkomsel', '50.000', '', 'Rp 50.000', ''),
-(17, 'Telkomsel', '60.000', '', 'Rp. 60.000', ''),
-(18, 'Telkomsel', '75.000', '', 'Rp. 75.000', ''),
-(19, 'Telkomsel', '80.000', '', 'Rp. 80.000', ''),
-(20, 'Telkomsel', '100.000', '', 'Rp. 100.000', ''),
-(21, 'Axis', '5.000', '', 'Rp. 6.050', ''),
-(22, 'Axis', '10.000', '', 'Rp. 11.099', ''),
-(23, 'Axis', '15.000', '', 'Rp. 15.150', ''),
-(24, 'Axis ', '25.000', '', 'Rp. 25.250', ''),
-(25, 'Axis ', '30.000', '', 'Rp 30.250', ''),
-(26, 'Axis', '50.000', '', 'Rp 50.000', ''),
-(27, 'Axis', '100.000', '', '99.750', ''),
-(28, 'Axis', '20.000', '', 'Rp 198.900', ''),
-(29, 'Axis', '300.000', '', 'Rp. 297.900', ''),
+(9, 'Telkomsel 5000', '5000', '', '6000', ''),
+(10, 'Telkomsel', '10000', '', 'Rp. 11500', ''),
+(11, 'Telkomsel', '15000', '', 'Rp. 16500', ''),
+(12, 'Telkomsel', '20000', '', 'Rp. 21000', ''),
+(13, 'Telkomsel', '25000', '', 'Rp. 25000', ''),
+(15, 'Telkomsel', '40000', '', 'Rp. 40000', ''),
+(16, 'Telkomsel', '50000', '', 'Rp 50000', ''),
+(17, 'Telkomsel', '60000', '', 'Rp. 60000', ''),
+(18, 'Telkomsel', '75000', '', 'Rp. 75000', ''),
+(19, 'Telkomsel', '80000', '', 'Rp. 80000', ''),
+(20, 'Telkomsel', '100000', '', 'Rp. 100000', ''),
+(21, 'Axis', '5000', '', 'Rp. 6050', ''),
+(22, 'Axis', '10000', '', 'Rp. 11099', ''),
+(23, 'Axis', '15000', '', 'Rp. 15150', ''),
+(24, 'Axis ', '25000', '', 'Rp. 25250', ''),
+(25, 'Axis ', '30000', '', 'Rp 30250', ''),
+(26, 'Axis', '50000', '', 'Rp 50000', ''),
+(27, 'Axis', '100000', '', '99750', ''),
+(28, 'Axis', '20000', '', 'Rp 198900', ''),
+(29, 'Axis', '300000', '', 'Rp. 297900', ''),
 (30, 'Axis', '500.000', '', 'Rp 496.500', ''),
 (31, 'Axis', '1.000.000', '', 'Rp 995.000', ''),
-(32, 'Indosat', '5.000', '', 'Rp. 6.450', ''),
-(33, 'Indosat', '12.000', '', 'Rp. 12.200', ''),
-(34, 'Indosat', '15.000', '', 'Rp. 15.100', ''),
-(35, 'Indosat', '20.000', '', 'Rp, 20.250', ''),
-(36, 'Indosat', '25.000', '', 'Rp 25.000', ''),
-(37, 'Indosat', '30.000', '', 'Rp. 29.995', ''),
-(38, 'Indosat', '40.000', '', 'Rp 39.900', ''),
-(39, 'Indosat', '80.000', '', 'Rp 79.500', ''),
-(40, 'Indosat', '100.000', '', 'Rp. 98.750', ''),
-(41, 'Indosat', '125.000', '', 'Rp 124.700', ''),
-(42, 'Indosat', '150.000', '', 'Rp 147.700', ''),
-(43, 'Indosat', '150.000', '', 'Rp 147.700', ''),
-(44, 'Indosat', '200.000', '', 'Rp. 191.100', ''),
-(45, 'Indosat', '10.000', '', 'Rp. 11.250', ''),
-(46, 'XL', '5.000', '', 'Rp. 6.000', ''),
-(47, 'XL', '10.000', '', 'Rp. 11.200', ''),
-(48, 'XL', '15.000', '', 'Rp. 15.100', ''),
-(49, 'XL', '25.000', '', 'Rp. 24.900', ''),
-(50, 'XL', '30.000', '', 'Rp. 29.990', ''),
-(51, 'XL', '50.000', '', 'Rp.49.700', ''),
-(52, 'XL', '100.000', '', 'Rp. 99.500', ''),
-(53, 'XL', '150.000', '', 'Rp. 148.000', ''),
-(54, 'XL', '200.000', '', 'Rp 198.600', ''),
-(55, 'XL', '300.000', '', 'Rp. 297.990', ''),
-(56, 'XL', '500.000', '', 'Rp. 497.500', ''),
-(57, 'XL', '1.000.000', '', 'Rp 995.000', ''),
-(58, 'By.U', '5.000', '', 'Rp 6.000', ''),
-(59, 'By.U', '10.000', '', 'Rp 11.500', ''),
-(60, 'By.U', '15.000', '', 'Rp. 16.500', ''),
-(61, 'By.U', '20.000', '', 'Rp 21.000', ''),
-(62, 'By.U', '25.000', '', '25.000', ''),
-(63, 'By.U', '30.000', '', 'Rp. 30.000', ''),
-(64, 'By.U', '40.000', '', 'Rp. 40.000', ''),
-(65, 'By.U', '50.000', '', 'Rp. 50.000', ''),
-(66, 'By.U', '60.000', '', 'Rp 60.000', ''),
-(67, 'By.U', '75.000', '', 'Rp. 75.000', ''),
-(68, 'By.U', '80.000', '', 'Rp. 80.000', ''),
-(69, 'By.U', '100.000', '', 'Rp. 100.000', ''),
-(70, 'Smartfren', '5.000', '', 'Rp. 5.500', ''),
-(71, 'Smartfren', '10.000', '', 'Rp 10.490', ''),
-(72, 'Smartfren', '20.000', '', 'Rp. 19.900', ''),
-(73, 'Smartfren', '25.000', '', 'Rp. 24.950', ''),
-(74, 'Smartfren', '30.000', '', 'Rp 30.000', ''),
-(75, 'Smartfren', '50.000', '', 'Rp. 49.750', ''),
-(76, 'Smartfren', '60.000', '', 'Rp. 59.600', ''),
-(77, 'Smartfren', '100.000', '', 'Rp. 98.000', ''),
-(78, 'Smartfren', '150.000', '', 'Rp. 148.000', ''),
-(79, 'Smartfren', '200.000', '', 'Rp. 198.000', ''),
-(80, 'Smartfren', '250.000', '', 'Rp. 247.700', ''),
-(81, 'Smartfren', '300.000', '', 'Rp. 297.000', ''),
-(82, 'Smartfren', '500.000', '', 'Rp. 495.000', ''),
-(83, 'Smartfren', '1.000.000', '', 'Rp. 990.000', ''),
-(85, 'Tri 5000', '60000', '', '7000', '');
+(32, 'Indosat', '5000', '', 'Rp. 6450', ''),
+(33, 'Indosat', '12000', '', 'Rp. 12200', ''),
+(34, 'Indosat', '15000', '', 'Rp. 15100', ''),
+(35, 'Indosat', '20000', '', 'Rp. 20250', ''),
+(36, 'Indosat', '25000', '', 'Rp 25000', ''),
+(37, 'Indosat', '30000', '', 'Rp. 29995', ''),
+(38, 'Indosat', '40000', '', 'Rp 39900', ''),
+(39, 'Indosat', '80000', '', 'Rp 79500', ''),
+(40, 'Indosat', '100000', '', 'Rp. 98750', ''),
+(41, 'Indosat', '125000', '', 'Rp 124700', ''),
+(42, 'Indosat', '150000', '', 'Rp 147700', ''),
+(43, 'Indosat', '150000', '', 'Rp 147700', ''),
+(44, 'Indosat', '200000', '', 'Rp. 191100', ''),
+(45, 'Indosat', '10000', '', 'Rp. 11250', ''),
+(46, 'XL', '5000', '', 'Rp. 6000', ''),
+(47, 'XL', '10000', '', 'Rp. 11200', ''),
+(48, 'XL', '15000', '', 'Rp. 15100', ''),
+(49, 'XL', '25000', '', 'Rp. 24900', ''),
+(50, 'XL', '30000', '', 'Rp. 29990', ''),
+(51, 'XL', '50000', '', 'Rp.49700', ''),
+(52, 'XL', '100000', '', 'Rp. 99500', ''),
+(53, 'XL', '150000', '', 'Rp. 148000', ''),
+(54, 'XL', '200000', '', 'Rp 198600', ''),
+(55, 'XL', '300000', '', 'Rp. 297990', ''),
+(56, 'XL', '500000', '', 'Rp. 497500', ''),
+(57, 'XL', '1000000', '', 'Rp 995000', ''),
+(58, 'By.U', '5000', '', 'Rp 6000', ''),
+(59, 'By.U', '10000', '', 'Rp 11500', ''),
+(60, 'By.U', '15000', '', 'Rp. 16500', ''),
+(61, 'By.U', '20000', '', 'Rp 21000', ''),
+(62, 'By.U', '25000', '', '25000', ''),
+(63, 'By.U', '30000', '', 'Rp. 30000', ''),
+(64, 'By.U', '40000', '', 'Rp. 40000', ''),
+(65, 'By.U', '50000', '', 'Rp. 50000', ''),
+(66, 'By.U', '60000', '', 'Rp 60000', ''),
+(67, 'By.U', '75000', '', 'Rp. 75000', ''),
+(68, 'By.U', '80000', '', 'Rp. 80000', ''),
+(69, 'By.U', '100000', '', 'Rp. 100000', ''),
+(70, 'Smartfren', '5000', '', 'Rp. 5500', ''),
+(71, 'Smartfren', '10000', '', 'Rp 10490', ''),
+(72, 'Smartfren', '20000', '', 'Rp. 19900', ''),
+(73, 'Smartfren', '25000', '', 'Rp. 24950', ''),
+(74, 'Smartfren', '30000', '', 'Rp 30000', ''),
+(75, 'Smartfren', '50000', '', 'Rp. 49750', ''),
+(76, 'Smartfren', '60000', '', 'Rp. 59600', ''),
+(77, 'Smartfren', '100000', '', 'Rp. 98000', ''),
+(78, 'Smartfren', '150000', '', 'Rp. 148000', ''),
+(79, 'Smartfren', '200000', '', 'Rp. 198000', ''),
+(80, 'Smartfren', '250000', '', 'Rp. 247700', ''),
+(81, 'Smartfren', '300000', '', 'Rp. 297000', ''),
+(82, 'Smartfren', '500000', '', 'Rp. 495000', ''),
+(83, 'Smartfren', '1000000', '', 'Rp. 990000', ''),
+(85, 'Tri 5000', '60000', '', '7000', ''),
+(86, '', '', '', '', ''),
+(87, '', '', '', '', ''),
+(88, '', '', '', '', ''),
+(89, '', '', '', '', ''),
+(90, '', '', '', '', ''),
+(91, '', '', '', '', ''),
+(92, '', '', '', '', ''),
+(93, '', '', '', '', ''),
+(94, '', '', '', '', ''),
+(95, '', '', '', '', ''),
+(96, '', '', '', '', ''),
+(97, '', '', '', '', ''),
+(98, '', '', '', '', ''),
+(99, '', '', '', '', ''),
+(100, '', '', '', '', ''),
+(101, '', '', '', '', ''),
+(102, '', '', '', '', ''),
+(103, '', '', '', '', ''),
+(104, '', '', '', '', ''),
+(105, '', '', '', '', ''),
+(106, '', '', '', '', ''),
+(107, '', '', '', '', ''),
+(108, '', '', '', '', ''),
+(109, '', '', '', '', ''),
+(110, '', '', '', '', ''),
+(111, '', '', '', '', ''),
+(112, '', '', '', '', ''),
+(113, '', '', '', '', ''),
+(114, '', '', '', '', ''),
+(115, '', '', '', '', ''),
+(116, '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -330,10 +378,10 @@ INSERT INTO `products_pulsa` (`id`, `Jenis_pulsa`, `harga`, `image`, `harga_asli
 --
 
 CREATE TABLE `transaksi` (
-  `id_transaksi` int(11) NOT NULL,
-  `Jenis_pembayaran` int(11) NOT NULL,
-  `Tanggal_transaksi` int(11) NOT NULL,
-  `Waktu_transaksi` int(11) NOT NULL
+  `id_transaksi` int(5) NOT NULL,
+  `id_penjualan` int(5) DEFAULT NULL,
+  `Tanggal_transaksi` date NOT NULL,
+  `Waktu_transaksi` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -347,6 +395,7 @@ CREATE TABLE `user` (
   `username` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
+  `No_Telepon` varchar(50) NOT NULL,
   `level` varchar(288) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -354,17 +403,31 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `password`, `email`, `level`) VALUES
-(35, 'admin', 'admin>                                        admi', 'admin@admin.com', 'admin111'),
-(36, 'Dimas', '20114', 'Dimas@gmail.com', 'pelanggan'),
-(37, 'Febri fANISA', '20114', 'Febri2gmail,com', 'pelanggan'),
-(38, 'Nora Syuhada', '20114', 'Nora@gmail.com', 'pelanggan'),
-(39, 'Teuku', '20114', 'Teuku@gmail.com', 'pelanggan'),
-(42, 'abil', '123', 'abil@bodat.com', 'pelanggan');
+INSERT INTO `user` (`id`, `username`, `password`, `email`, `No_Telepon`, `level`) VALUES
+(35, 'admin', '123', 'admin@admin.com', '093848581998', 'admin'),
+(36, 'Dimas', '123', 'Dimas@gmail.com', '109293993', 'pelanggan'),
+(37, 'Febri Fanisa', '20114', 'Febri2gmail,com', '099w8e8e', 'pelanggan'),
+(38, 'Nora Syuhada', '20114', 'Nora@gmail.com', '9w9e9w9288', 'pelanggan'),
+(39, 'Teuku', '20114', 'Teuku@gmail.com', '19299292', 'pelanggan'),
+(42, 'abil', '123', 'abil@bodat.com', '01ioo1o', 'pelanggan'),
+(45, 'Abil', '', 'abil@bodat.com', '083999292', 'pemain'),
+(46, 'aldi', '20114', 'aldi@gmail.com', '08838892', '');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `penjualan`
+--
+ALTER TABLE `penjualan`
+  ADD PRIMARY KEY (`id_penjualan`),
+  ADD KEY `penjualan` (`id`),
+  ADD KEY `refpentelkom` (`id_paket_telkomsel`),
+  ADD KEY `refpenaxis` (`id_paket_axis`),
+  ADD KEY `refpenindo` (`id_paket_indosat`),
+  ADD KEY `refpenxl` (`id_paket_xl`),
+  ADD KEY `refpensmart` (`id_paket_smartfren`);
 
 --
 -- Indexes for table `products_paket_axis`
@@ -406,7 +469,8 @@ ALTER TABLE `products_pulsa`
 -- Indexes for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  ADD KEY `products_pulsa` (`Jenis_pembayaran`);
+  ADD PRIMARY KEY (`id_transaksi`),
+  ADD KEY `refpen` (`id_penjualan`);
 
 --
 -- Indexes for table `user`
@@ -417,6 +481,12 @@ ALTER TABLE `user`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `penjualan`
+--
+ALTER TABLE `penjualan`
+  MODIFY `id_penjualan` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=176;
 
 --
 -- AUTO_INCREMENT for table `products_paket_axis`
@@ -440,7 +510,7 @@ ALTER TABLE `products_paket_smartfren`
 -- AUTO_INCREMENT for table `products_paket_telkomsel`
 --
 ALTER TABLE `products_paket_telkomsel`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `products_paket_xl`
@@ -452,23 +522,40 @@ ALTER TABLE `products_paket_xl`
 -- AUTO_INCREMENT for table `products_pulsa`
 --
 ALTER TABLE `products_pulsa`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
+
+--
+-- AUTO_INCREMENT for table `transaksi`
+--
+ALTER TABLE `transaksi`
+  MODIFY `id_transaksi` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- Constraints for dumped tables
 --
 
 --
+-- Constraints for table `penjualan`
+--
+ALTER TABLE `penjualan`
+  ADD CONSTRAINT `penjualan` FOREIGN KEY (`id`) REFERENCES `products_pulsa` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `refpenaxis` FOREIGN KEY (`id_paket_axis`) REFERENCES `products_paket_axis` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `refpenindo` FOREIGN KEY (`id_paket_indosat`) REFERENCES `products_paket_indosat` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `refpensmart` FOREIGN KEY (`id_paket_smartfren`) REFERENCES `products_paket_smartfren` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `refpentelkom` FOREIGN KEY (`id_paket_telkomsel`) REFERENCES `products_paket_telkomsel` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `refpenxl` FOREIGN KEY (`id_paket_xl`) REFERENCES `products_paket_xl` (`id`) ON UPDATE CASCADE;
+
+--
 -- Constraints for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  ADD CONSTRAINT `products_pulsa` FOREIGN KEY (`Jenis_pembayaran`) REFERENCES `products_pulsa` (`id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `refpen` FOREIGN KEY (`id_penjualan`) REFERENCES `penjualan` (`id_penjualan`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

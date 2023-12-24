@@ -1,3 +1,9 @@
+<?php
+session_start();
+include("../config/header.php");
+include("../config/koneksi.php");
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -5,10 +11,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bantuan</title>
-    <link rel="stylesheet" href="/css/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../assets/css/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
 
-    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -18,7 +24,8 @@
     />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" />
-    <script src="/js/script.js" defer></script>
+    <script src="../assets/js/script.js" defer></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
   </head>
   <style>
     * {
@@ -87,51 +94,71 @@
   <body>
     <!--Navbar-->
     <nav>
-      <div class="navbar">
-        <i class="bx bx-menu"></i>
-        <div class="zee"><img src="/img/logo/logo.jpg" height="60px" width="60px" /></div>
-        <div class="logo" style="margin-left: -200px; margin-right: -150px"><a href="#">Aero cell</a></div>
-        <div class="nav-links">
-          <div class="sidebar-logo">
-            <span class="logo-name">Aero Cell</span>
-            <i class="bx bx-x"></i>
-          </div>
-          <ul class="links">
-            <li><a href="../index.html">Beranda</a></li>
-            <li><a href="../pulsa.html">Pulsa</a></li>
-            <li>
-              <a href="#">Produk & Paket</a>
-              <i class="bx bxs-chevron-down htmlcss-arrow arrow"></i>
-              <ul class="htmlCss-sub-menu sub-menu">
-                <li>
-                  <a href="/product dan paket/produktelkomsel.html">Telkomsel</a>
-                  <a href="/product dan paket/produkaxis.html">Axis</a>
-                  <a href="/product dan paket/produkindoosat.html">Indoosat</a>
-                  <a href="/product dan paket/produkxl.html">XL</a>
-                  <a href="/product dan paket/produkbyu.html">By.u</a>
-                  <a href="/product dan paket/produksmartfren.html">Smartfren</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a href="../promo/promo.html">Promo</a>
-            </li>
-            <li><a href="../bantuan/bantuan.html">Bantuan</a></li>
-            <li><a href="#"></a></li>
-          </ul>
+    <div class="navbar">
+      <i class='bx bx-menu'></i>
+      <div class="zee"><img src="../assets/img/logo/logo.jpg" height="60px" width="60px"></div>
+      <div class="logo"><a href="#">Aero cell</a></div>
+      <div class="nav-links">
+        <div class="sidebar-logo">
+          <span class="logo-name">Aero Cell</span>
+          <i class='bx bx-x'></i>
         </div>
-        <div class="search-box">
-          <i class="bx bx-search"></i>
-          <div class="input-box">
-            <input type="text" placeholder="Cari...." />
-          </div>
+        <ul class="links">
+          <li><a href="../auth/index.php" style="font-family: italic">Beranda</a></li>
+          <li><a href="../pulsa/pulsa.php" style="font-family: italic">Pulsa</a></li>
+          <li>
+            <a href="#" style="font-family: italic">Produk & Paket</a>
+            <i class='bx bxs-chevron-down htmlcss-arrow arrow'></i>
+            <ul class="htmlCss-sub-menu sub-menu">
+              <li><a href="../product dan paket/produktelkomsel.php" style="font-family: italic">Telkomsel</a>
+                <a href="../product dan paket/produkaxis.php" style="font-family: italic">Axis</a>
+                <a href="../product dan paket/produkindoosat.php" style="font-family: italic">Indoosat</a>
+                <a href="../product dan paket/produkxl.php" style="font-family: italic">XL</a>
+                <a href="../product dan paket/produkbyu.php" style="font-family: italic">By.u</a>
+                <a href="../product dan paket/produksmartfren.php" style="font-family: italic">Smartfren</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="../promo/promo.php" style="font-family: italic">Promo</a>
+          </li>
+          <li><a href="../bantuan/bantuan.php" style="font-family: italic">Bantuan</a></li>
+          <li><a href="#"></a></li>
+        </ul>
+      </div>
+
+      <div class="header">
+        <button type="button" data-bs-toggle="dropdown" aria-expanded="false" class="btn btn-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+          </svg>
+          <?= $username ?>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li><a class="dropdown-item" href="../auth/profil.php" style="font-family: italic">Ganti Password</a></li>
+          <li><a class="dropdown-item" href="../auth/logout.php" style="font-family: italic">Logout</a></li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+        </ul>
+      </div>
+
+      <div class="search-box">
+        <i class='bx bx-search'></i>
+        <div class="input-box">
+          <input type="text" placeholder="Cari....">
         </div>
       </div>
-    </nav>
+      <div class="keranjang">
+        <a href="../Pembayaran/pembayaran.php"><i class="fas fa-cart-shopping" style="color: black;"></i></a>
+      </div>
+    </div>
+  </nav>
 
     <section id="banner">
       <div>
-        <img src="/img/bgrnd/pngtree-summer-paper-cut-style-blue-wave-background-banner-image_387210.jpg" alt="" width="1280px" height="450px" />
+        <img src="../assets/img/bgrnd/pngtree-summer-paper-cut-style-blue-wave-background-banner-image_387210.jpg" alt="" width="1280px" height="450px" />
         <div class="container">
           <div class="form-bantuan-general">
             <div class="heading">
@@ -160,11 +187,11 @@
     <section id="populer" class="isi">
       <div class="container">
         <div class="list-group">
-          <a href="/bantuan/bantuan.html"><button type="button" class="list-group-item list-group-item-action" aria-current="true">Populer</button></a>
-          <a href="/bantuan/kartuhelp.html"><button type="button" class="list-group-item list-group-item-action">Kartu</button></a>
-          <a href="/bantuan/layanan.html"><button type="button" class="list-group-item list-group-item-action">Layanan</button></a>
-          <a href="/bantuan/pulsahelp.html"><button type="button" class="list-group-item list-group-item-action active">Pulsa</button></a>
-          <a href="/bantuan/jaringan.html"><button type="button" class="list-group-item list-group-item-action">Jaringan</button></a>
+          <a href="bantuan.php"><button type="button" class="list-group-item list-group-item-action" aria-current="true">Populer</button></a>
+          <a href="kartuhelp.php"><button type="button" class="list-group-item list-group-item-action active">Kartu</button></a>
+          <a href="layanan.php"><button type="button" class="list-group-item list-group-item-action">Layanan</button></a>
+          <a href="pulsahelp.php"><button type="button" class="list-group-item list-group-item-action">Pulsa</button></a>
+          <a href="jaringan.php"><button type="button" class="list-group-item list-group-item-action">Jaringan</button></a>
         </div>
       </div>
     </section>
@@ -174,8 +201,6 @@
         <button type="button" class="list-group-item list-group-item-action" aria-current="true">Cara Ganti Akun Ke 4G <i class="bx bxs-chevron-right" style="margin-left: 600px"></i></button>
         <button type="button" class="list-group-item list-group-item-action">Cara Cek Kuota <i class="bx bxs-chevron-right" style="margin-left: 653px"></i></button>
         <button type="button" class="list-group-item list-group-item-action">Bagaimana Cara Mengatasi Ketika Paket Tidak Masuk <i class="bx bxs-chevron-right" style="margin-left: 350px"></i></button>
-        <button type="button" class="list-group-item list-group-item-action">Bagaimana Cara Menggunakan Metode Pembayaran <i class="bx bxs-chevron-right" style="margin-left: 348px"></i></button>
-        <button type="button" class="list-group-item list-group-item-action">Apa Kelebihan Menggunakan Web Kami<i class="bx bxs-chevron-right" style="margin-left: 460px"></i></button>
       </div>
     </section>
 
@@ -249,7 +274,7 @@
       </div>
     </section>
 
-     <!-- Footer Starts -->
+   <!-- Footer Starts -->
 
 <footer style="margin-top: 200px;">
   <div class="container">
@@ -326,7 +351,7 @@
         <h5 style="color: white;">Cek & Beli Kuota Data Internet <br>Di Aero Cell</h5>
         <span>Download Sekarang</span>
         <div style="padding-top: 20px;">
-          <img src="/img/logo/google-play-and-apple-app-store-logos-22.png" alt="" height="50px" width="350px">
+          <img src="../assets/img/logo/google-play-and-apple-app-store-logos-22.png" alt="" height="50px" width="350px">
         </div>
       </div>
       <div class="col-lg-4">
@@ -360,5 +385,6 @@ height: 10vh;">
     <script>
       AOS.init();
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

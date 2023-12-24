@@ -56,9 +56,9 @@ include("../config/header.php");
             </ul>
           </li>
           <li>
-            <a href="../promo/promo.html" style="font-family: italic">Promo</a>
+            <a href="../promo/promo.php" style="font-family: italic">Promo</a>
           </li>
-          <li><a href="../bantuan/bantuan.html" style="font-family: italic">Bantuan</a></li>
+          <li><a href="../bantuan/bantuan.php" style="font-family: italic">Bantuan</a></li>
           <li><a href="#"></a></li>
         </ul>
       </div>
@@ -72,9 +72,8 @@ include("../config/header.php");
           <?= $username ?>
         </button>
         <ul class="dropdown-menu dropdown-menu-end">
-          <li><a class="dropdown-item" href="#" style="font-family: italic">Profile</a></li>
+          <li><a class="dropdown-item" href="profil.php" style="font-family: italic">Ganti Password</a></li>
           <li><a class="dropdown-item" href="logout.php" style="font-family: italic">Logout</a></li>
-          <li><a class="dropdown-item" href="#" style="font-family: italic">Something else here</a></li>
           <li>
             <hr class="dropdown-divider">
           </li>
@@ -88,7 +87,7 @@ include("../config/header.php");
         </div>
       </div>
       <div class="keranjang">
-        <a href="../keranjang/keranjang.html"><i class="fas fa-cart-shopping" style="color: black;"></i></a>
+        <a href="../Pembayaran/pembayaran.php"><i class="fas fa-cart-shopping" style="color: black;"></i></a>
       </div>
     </div>
   </nav>
@@ -132,7 +131,7 @@ include("../config/header.php");
         <div class="col-lg-2 col-sm-4 mt-3">
           <div class="pKanan">
             <div class="card kartu">
-              <a href="../product dan paket/produktelkomsel.html"><svg xmlns="http://www.w3.org/2000/svg" class="bi bi-clipboard2-data" viewBox="0 0 16 16">
+              <a href="../product dan paket/produktelkomsel.php"><svg xmlns="http://www.w3.org/2000/svg" class="bi bi-clipboard2-data" viewBox="0 0 16 16">
                   <path d="M9.5 0a.5.5 0 0 1 .5.5.5.5 0 0 0 .5.5.5.5 0 0 1 .5.5V2a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 5 2v-.5a.5.5 0 0 1 .5-.5.5.5 0 0 0 .5-.5.5.5 0 0 1 .5-.5h3Z" />
                   <path d="M3 2.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 0 0-1h-.5A1.5 1.5 0 0 0 2 2.5v12A1.5 1.5 0 0 0 3.5 16h9a1.5 1.5 0 0 0 1.5-1.5v-12A1.5 1.5 0 0 0 12.5 1H12a.5.5 0 0 0 0 1h.5a.5.5 0 0 1 .5.5v12a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-12Z" />
                   <path d="M10 7a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V7Zm-6 4a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1Zm4-3a1 1 0 0 0-1 1v3a1 1 0 1 0 2 0V9a1 1 0 0 0-1-1Z" />
@@ -145,7 +144,7 @@ include("../config/header.php");
         <div class="col-lg-2 col-sm-4 mt-3">
           <div class="pKanan">
             <div class="card pulsa">
-              <a href="pulsa.html"><svg xmlns="http://www.w3.org/2000/svg" class="bi bi-window-plus" viewBox="0 0 16 16">
+              <a href="../pulsa/pulsa.php"><svg xmlns="http://www.w3.org/2000/svg" class="bi bi-window-plus" viewBox="0 0 16 16">
                   <path d="M2.5 5a.5.5 0 1 0  0-1 .5.5 0 0 0 0 1ZM4 5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1Zm2-.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Z" />
                   <path d="M0 4a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v4a.5.5 0 0 1-1 0V7H1v5a1 1 0 0 0 1 1h5.5a.5.5 0 0 1 0 1H2a2 2 0 0 1-2-2V4Zm1 2h13V4a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2Z" />
                   <path d="M16 12.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Zm-3.5-2a.5.5 0 0 0-.5.5v1h-1a.5.5 0 0 0 0 1h1v1a.5.5 0 0 0 1 0v-1h1a.5.5 0 0 0 0-1h-1v-1a.5.5 0 0 0-.5-.5Z" />
@@ -158,7 +157,7 @@ include("../config/header.php");
         <div class="col-lg-2 col-sm-4 mt-3">
           <div class="pKanan">
             <div class="card paket">
-              <a href="../assets/img/product dan paket/produktelkomsel.html"><svg xmlns="http://www.w3.org/2000/svg" class="bi bi-credit-card-2-back" viewBox="0 0 16 16">
+              <a href="../product dan paket/produktelkomsel.php"><svg xmlns="http://www.w3.org/2000/svg" class="bi bi-credit-card-2-back" viewBox="0 0 16 16">
                   <path d="M11 5.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1z" />
                   <path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2zm13 2v5H1V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1zm-1 9H2a1 1 0 0 1-1-1v-1h14v1a1 1 0 0 1-1 1z" />
                 </svg></a>
@@ -181,13 +180,13 @@ include("../config/header.php");
         </div>
         <div class="col-md-4 col-sm-6">
           <div class="card" data-aos="fade-up">
-            <a href="../pages/promo/promo.html"><img src="../assets/img/promoime1.png" class="card-img-top" alt="..."></a>
+            <a href="../promo/promo.php"><img src="../assets/img/promoime1.png" class="card-img-top" alt="..."></a>
           </div>
         </div>
 
         <div class="col-md-4 col- col-sm-6">
           <div class="card" data-aos="fade-up">
-            <a href="../promo/promo.html"><img src="../assets/img/promoime2.png" class="card-img-top" alt="..."></a>
+            <a href="../promo/promo.php"><img src="../assets/img/promoime2.png" class="card-img-top" alt="..."></a>
           </div>
         </div>
       </div>
@@ -202,12 +201,12 @@ include("../config/header.php");
       <div class="wrappaer">
         <i id="left" class="fa-solid fa-angle-left"></i>
         <div class="carousell">
-          <a href="../promo/promo.html" style="margin-right: 20px;"><img src="../assets/img/promo/promo2_result.jpg" alt="img" draggable="false"></a>
-          <a href="../promo/promo.html" style="margin-right: 20px;"><img src="../assets/img/promo/promo5_result.jpg" alt="img" draggable="false"></a>
-          <a href="../promo/promo.html" style="margin-right: 20px;"><img src="../assets/img/promo/promo7_result.png" alt="img" draggable="false"></a>
-          <a href="../promo/promo.html" style="margin-right: 20px;"><img src="../assets/img/promo/promo9_result.jpg" alt="img" draggable="false"></a>
-          <a href="../promo/promo.html" style="margin-right: 20px;"><img src="../assets/img/promo/promo10_result.jpg" alt="img" draggable="false"></a>
-          <a href="../promo/promo.html" style="margin-right: 20px;"><img src="../assets/img/promo/promo12_result.jpg" alt="img" draggable="false"></a>
+          <a href="../promo/promo.php" style="margin-right: 20px;"><img src="../assets/img/promo/promo2_result.jpg" alt="img" draggable="false"></a>
+          <a href="../promo/promo.php" style="margin-right: 20px;"><img src="../assets/img/promo/promo5_result.jpg" alt="img" draggable="false"></a>
+          <a href="../promo/promo.php" style="margin-right: 20px;"><img src="../assets/img/promo/promo7_result.png" alt="img" draggable="false"></a>
+          <a href="../promo/promo.php" style="margin-right: 20px;"><img src="../assets/img/promo/promo9_result.jpg" alt="img" draggable="false"></a>
+          <a href="../promo/promo.php" style="margin-right: 20px;"><img src="../assets/img/promo/promo10_result.jpg" alt="img" draggable="false"></a>
+          <a href="../promo/promo.php" style="margin-right: 20px;"><img src="../assets/img/promo/promo12_result.jpg" alt="img" draggable="false"></a>
         </div>
         <i id="right" class="fa-solid fa-angle-right"></i>
       </div>
@@ -278,7 +277,7 @@ include("../config/header.php");
                 </h5>
                 <h6><b>Rp. 42.000 </b></h6>
                 <p>Masa aktif 14 hari</p>
-                <a href="../product dan paket/produktelkomsel.html" class="btn btn-primary" style="font-family: italic">Beli Paket</a>
+                <a href="../product dan paket/produktelkomsel.php" class="btn btn-primary" style="font-family: italic">Beli Paket</a>
               </div>
             </div>
           </div>
@@ -293,7 +292,7 @@ include("../config/header.php");
                 </h5>
                 <h6><b>Rp. 20.000 </b></h6>
                 <p>Masa aktif 30 hari</p>
-                <a href="../product dan paket/produkaxis.html" class="btn btn-primary" style="font-family: italic">Beli Paket</a>
+                <a href="../product dan paket/produkaxis.php" class="btn btn-primary" style="font-family: italic">Beli Paket</a>
               </div>
             </div>
           </div>
@@ -308,7 +307,7 @@ include("../config/header.php");
                 </h5>
                 <h6><b>Rp. 100.000 </b></h6>
                 <p>Masa aktif 30 hari</p>
-                <a href="../product dan paket/produkindoosat.html" class="btn btn-primary" style="font-family: italic">Beli Paket</a>
+                <a href="../product dan paket/produkindoosat.php" class="btn btn-primary" style="font-family: italic">Beli Paket</a>
               </div>
             </div>
           </div>
@@ -323,7 +322,7 @@ include("../config/header.php");
                 </h5>
                 <h6><b>Rp. 70.000</b></h6>
                 <p> Masa aktif 30 hari</p>
-                <a href="../product dan paket/produkxl.html" class="btn btn-primary" style="font-family: italic">Beli Paket</a>
+                <a href="../product dan paket/produkxl.php" class="btn btn-primary" style="font-family: italic">Beli Paket</a>
               </div>
             </div>
           </div>
@@ -438,7 +437,7 @@ include("../config/header.php");
               <img src="../assets/img/logo.png" alt="">
               <p style="font-family: italic">Silahkan membaca FAQ di halaman ini jika kamu membutuhkan pertanyaan jangan ragu untuk menghubungi kami.</p>
               <h3 style="cursor: pointer; padding-bottom: 5px;" style="font-family: italic">BACA FAQ DI SINI</h3>
-              <a href="../pages/bantuan/bantuan.html" class="btn btn-primary" style="font-family: italic">Hubungi Kami</a>
+              <a href="../bantuan/bantuan.php" class="btn btn-primary" style="font-family: italic">Hubungi Kami</a>
             </div>
           </div>
         </div>

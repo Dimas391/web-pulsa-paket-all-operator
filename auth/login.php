@@ -3,10 +3,10 @@
 include("../config/koneksi.php");
 
 session_start();
- if (isset($_SESSION['login'])) {
-   header("location: ./index.php");
-   exit;
- }
+if (isset($_SESSION['login'])) {
+  header("location: ./index.php");
+  exit;
+}
 
 ?>
 
@@ -467,8 +467,13 @@ session_start();
             </span>
           </div>
         </div>
+        
+        <div class="div" style="margin-left: -222px;">
+        <input type="checkbox" id="remember-me" name="remember-me"/>
+        <label for="remember-me">Remember Me</label>
+        </div>
 
-        <a href="#">Forgot Password?</a>
+
         <input type="submit" class="btn" name="login" value="Login" />
         <div class="daftar">
           <h4>Tidak punya akun? <a href="register.php">Daftar disini</a></h4>
@@ -479,6 +484,7 @@ session_start();
         echo '<p style="color: red;">Username atau password salah. Silakan coba lagi.</p>';
       }
       ?>
+
     </div>
   </div>
   <script type="text/javascript" src="../assets/js/main.js"></script>

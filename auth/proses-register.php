@@ -6,6 +6,7 @@ session_start();
 $user = [
     'username' => $_POST['username'],
     'email' => $_POST['email'],
+    'No_Telepon' => $_POST['No_Telepon'],
     'password' => $_POST['password'],
     'password2' => $_POST['password2'],
     'register' => $_POST['register'],
@@ -16,6 +17,7 @@ if ($user['password'] !== $user['password2']) {
     echo "<script>alert('Password yang anda masukkan tidak sama dengan password konfirmasi');</script>";
     $_SESSION['username'] = $_POST['username'];
     $_SESSION['email'] = $_POST['email'];
+    $_SESSION['No_Telepon'] = $_POST['No_Telepon'];
     header("refresh:3;url=register.php");
     exit;
 }
@@ -42,13 +44,13 @@ if ($row !== null) {
     header("refresh:5;url=register.php");
     exit;
 } else {
-    $query = "INSERT INTO user (username, password, email) VALUES (?, ?, ?)";
+    $query = "INSERT INTO user (username, password, email, No_Telepon) VALUES (?, ?, ?, ?)";
     $stmt = $koneksi->stmt_init();
     if (!$stmt) {
         die('Tidak dapat membuat objek statement');
     }
     $stmt->prepare($query);
-    $stmt->bind_param('sss', $user['username'], $user['password'], $user['email']);
+    $stmt->bind_param('sss', $user['username'], $user['password'], $user['email'], $user['No_Telepon']);
     $stmt->execute();
     $_SESSION['message'] = "Registrasi gagal. Silakan coba lagi."; 
     echo "<script>alert('Berhasil register ke dalam sistem. Silakan login dengan username dan password yang sudah dibuat'); </script>";

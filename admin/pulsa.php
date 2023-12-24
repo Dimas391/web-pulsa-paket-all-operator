@@ -120,9 +120,8 @@ while ($_record = mysqli_fetch_array($query)) {
                             <p style="font-size:25px; margin-top: 8px"><?= $username ?></p>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="#" style="font-family: italic">Profile</a></li>
+                            <li><a class="dropdown-item" href="../auth/profil.php" style="font-family: italic">Profile</a></li>
                             <li><a class="dropdown-item" href="../auth/logout.php" style="font-family: italic">Logout</a></li>
-                            <li><a class="dropdown-item" href="#" style="font-family: italic">Something else here</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>

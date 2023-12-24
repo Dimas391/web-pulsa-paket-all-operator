@@ -4,6 +4,11 @@ session_start();
 
 include("../config/koneksi.php");
 include("../config/header.php");
+
+if (!isset($_SESSION['login'])) {
+  header("location: ../auth/login.php");
+  exit;
+}
 ?>
 
 
@@ -155,9 +160,8 @@ include("../config/header.php");
           <?= $username ?>
         </button>
         <ul class="dropdown-menu dropdown-menu-end">
-          <li><a class="dropdown-item" href="#" style="font-family: italic">Profile</a></li>
+          <li><a class="dropdown-item" href="../auth/profil.php" style="font-family: italic">Ganti Password</a></li>
           <li><a class="dropdown-item" href="../auth/logout.php" style="font-family: italic">Logout</a></li>
-          <li><a class="dropdown-item" href="#" style="font-family: italic">Something else here</a></li>
           <li>
             <hr class="dropdown-divider">
           </li>
@@ -171,7 +175,7 @@ include("../config/header.php");
         </div>
       </div>
       <div class="keranjang">
-        <a href="../keranjang/keranjang.php"><i class="fas fa-cart-shopping" style="color: black;"></i></a>
+        <a href="../Pembayaran/pembayaran.php"><i class="fas fa-cart-shopping" style="color: black;"></i></a>
       </div>
     </div>
   </nav>
@@ -193,7 +197,7 @@ include("../config/header.php");
       </div>
       <div class="row mx-5">
         <div class="card col-md-2" style="width: 16rem;">
-          <img src="../img/logo/logo-telkomsel.png" alt="...">
+          <img src="../assets/img/logo/logo-telkomsel.png" alt="...">
           <div class="card-body text-center">
           </div>
         </div>
@@ -245,18 +249,13 @@ include("../config/header.php");
         <div class="col-md-3" style="margin-bottom: 25px; font-family:italic;">
           <div class="card">
             <div class="card-body">
-              <h6 class="card-title"><b><?php echo $row['']; ?></b></h6>
+              <h6 class="card-title"><b><?php echo $row['Jenis_pulsa']; ?></b></h6>
               <p class="card-text">
                 <b><?php echo $row['harga']; ?></b><br />
-
               <p><?php echo $row['harga_asli']; ?></p>
               </i>
-
               </p>
-
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $row['id']; ?>">Beli</button>
-
-
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $row['id']; ?>">Lihat</button>
 
             </div>
 
@@ -265,37 +264,41 @@ include("../config/header.php");
         </div>
       <?php } ?>
     </div>
-
   </div>
 
-  <?php foreach ($rows as $row) { ?>
+  <?php foreach ($result as $row) { ?>
     <div class="modal fade" id="exampleModal<?php echo $row['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-
       <div class="modal-dialog">
-
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel"><?php echo $row['Jenis_pulsa']; ?></h1>
+            <h1 class="modal-title fs-5" id="Jenis_pulsa" name="Jenis_pulsa"><?php echo $row['Jenis_pulsa']; ?></h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-
           </div>
           <div class="modal-body">
-            <h6 class="card-title"><b><?php echo $row['Jenis_pulsa']; ?></b></h6>
-            <p class="card-text">
-              <b><?php echo $row['harga']; ?></b><br />
-            <p><?php echo $row['harga_asli']; ?></p>
-            </i>
-            </p>
+            <form action="../Pembayaran/proses-pembayaran.php" method="POST">
+              <?php
+              $id = $row['id'];
+              $query_penjualan = "SELECT No_Telepon FROM penjualan WHERE id = $id";
+              $result_penjualan = mysqli_query($koneksi, $query_penjualan);
+              $penjualan = mysqli_fetch_assoc($result_penjualan);
+              ?>
+              <input type="hidden" value="<?php echo $row['id'] ?>" name="id">
+              <div class=" align-items-center">
+                <div class="col-auto">
+                  <input type="text" id="No_Telepon" name="No_Telepon" class="form-control" placeholder="Masukkan No Hp Anda" required>
+                </div>
+              </div>
+              <p class="card-text" id="harga" style="margin-top: 10px" name="harga">
+                <b>Rp. <?php echo $row['harga']; ?></b><br />
+              </p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-            <button type="button" class="btn btn-primary">Tambahkan Ke Keranjang</button>
+            <button type="submit" class="btn btn-primary">Beli</button>
           </div>
-
+          </form>
         </div>
-
       </div>
-
     </div>
   <?php } ?>
   </div>

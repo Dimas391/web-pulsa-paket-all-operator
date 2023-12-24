@@ -4,6 +4,11 @@ session_start();
 include("../config/header.php");
 include("../config/koneksi.php");
 
+if (!isset($_SESSION['login'])) {
+    header("location: ../auth/login.php");
+    exit;
+  }
+
 $query = mysqli_query($koneksi, "SELECT * FROM products_paket_axis");
 while ($_record = mysqli_fetch_array($query)) {
     $result[] = $_record;
@@ -120,9 +125,8 @@ while ($_record = mysqli_fetch_array($query)) {
                             <p style="font-size:25px; margin-top: 8px"><?= $username ?></p>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="#" style="font-family: italic">Profile</a></li>
+                            <li><a class="dropdown-item" href="../auth/profil.php" style="font-family: italic">Profile</a></li>
                             <li><a class="dropdown-item" href="../auth/logout.php" style="font-family: italic">Logout</a></li>
-                            <li><a class="dropdown-item" href="#" style="font-family: italic">Something else here</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -175,9 +179,6 @@ while ($_record = mysqli_fetch_array($query)) {
                         <li class="nav-item" style="color:grey;">
                             <a class="nav-link" href=" pulsa.php">Pulsa</a>
                         </li>
-                        <li class="nav-item" style="color:grey;">
-                            <a class="nav-link" href="transaksi.php">Transaksi</a>
-                        </li>
                 </div>
             </div>
             </nav>
@@ -221,7 +222,7 @@ while ($_record = mysqli_fetch_array($query)) {
                                 foreach ($result as $row) {
                                 ?>
                                     <tr>
-                                        <th align="center" scope="row" width="5%"><?php echo $row['id'] ?></th>
+                                        <th align="center" scope="row" width="5%"><?php echo $row['id_paket_axis'] ?></th>
                                         <td width="30%"><?php echo $row['Nama_kartu'] ?></td>
                                         <td width="30%"><?php echo $row['Nama_produk'] ?></td>
                                         <td width="30%"><?php echo $row['Kuota_utama'] ?></td>
@@ -235,13 +236,13 @@ while ($_record = mysqli_fetch_array($query)) {
                                         <td width="30%"><?php echo $row['Keterangan'] ?></td>
                                         <td width="5%">
                                             <div class="d-flex gap-1" style="color: #0000FF;">
-                                                <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal1<?php echo $row['id'] ?>">
+                                                <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal1<?php echo $row['id_paket_axis'] ?>">
                                                     <i class="bi bi-eye fs-6"></i>
                                                 </button>
-                                                <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalupdate<?php echo $row['id'] ?>">
+                                                <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalupdate<?php echo $row['id_paket_axis'] ?>">
                                                     <i class="bi bi-pencil-square fs-6"></i>
                                                 </button>
-                                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModaldelete<?php echo $row['id'] ?>">
+                                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModaldelete<?php echo $row['id_paket_axis'] ?>">
                                                     <i class="bi bi-trash fs-6"></i>
                                                 </button>
                                             </div>
@@ -341,7 +342,7 @@ while ($_record = mysqli_fetch_array($query)) {
                 <?php
                 foreach ($result as $row) {
                 ?>
-                    <div class="modal fade" id="exampleModal1<?php echo $row['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="exampleModal1<?php echo $row['id_paket_axis'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -419,7 +420,7 @@ while ($_record = mysqli_fetch_array($query)) {
         <?php
         foreach ($result as $row) {
         ?>
-            <div class="modal fade" id="exampleModalupdate<?php echo $row['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="exampleModalupdate<?php echo $row['id_paket_axis'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -428,7 +429,7 @@ while ($_record = mysqli_fetch_array($query)) {
                         </div>
                         <div class="modal-body">
                             <form action="proses-update-axis.php" method="POST">
-                                <input type="hidden" value="<?php echo $row['id'] ?>" name="id">
+                                <input type="hidden" value="<?php echo $row['id_paket_axis'] ?>" name="id">
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Nama Kartu</label>
                                     <input type="text" class="form-control" id="exampleFormControlInput1" name="Nama_kartu" value="<?php echo $row['Nama_kartu']; ?>">
@@ -499,7 +500,7 @@ while ($_record = mysqli_fetch_array($query)) {
         <?php
         foreach ($result as $row) {
         ?>
-            <div class="modal fade" id="exampleModaldelete<?php echo $row['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="exampleModaldelete<?php echo $row['id_paket_axis'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-md">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -508,7 +509,7 @@ while ($_record = mysqli_fetch_array($query)) {
                         </div>
                         <div class="modal-body">
                             <form action="proses-delete-axis.php" method="POST">
-                                <input type="hidden" value="<?php echo $row['id'] ?>" name="id">
+                                <input type="hidden" value="<?php echo $row['id_paket_axis'] ?>" name="id">
                                 <div class="col-lg-12">
                                     apakah anda yakin ingin menghapus data produk axis <b><?php echo $row['Nama_produk'] ?></b>
                                 </div>

@@ -4,9 +4,12 @@ session_start();
 include("../config/koneksi.php");
 include("../config/header.php");
 
+if (!isset($_SESSION['login'])) {
+  header("location: ../auth/login.php");
+  exit;
+}
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -128,9 +131,8 @@ include("../config/header.php");
           <?= $username ?>
         </button>
         <ul class="dropdown-menu dropdown-menu-end">
-          <li><a class="dropdown-item" href="#" style="font-family: italic">Profile</a></li>
+          <li><a class="dropdown-item" href="../auth/profil.php" style="font-family: italic">Ganti Password</a></li>
           <li><a class="dropdown-item" href="../auth/logout.php" style="font-family: italic">Logout</a></li>
-          <li><a class="dropdown-item" href="#" style="font-family: italic">Something else here</a></li>
           <li>
             <hr class="dropdown-divider">
           </li>
@@ -144,7 +146,7 @@ include("../config/header.php");
         </div>
       </div>
       <div class="keranjang">
-        <a href="../keranjang/keranjang.php"><i class="fas fa-cart-shopping" style="color: black;"></i></a>
+        <a href="../Pembayaran/pembayaran.php"><i class="fas fa-cart-shopping" style="color: black;"></i></a>
       </div>
     </div>
   </nav>
@@ -175,7 +177,7 @@ include("../config/header.php");
                 <br />
                 <h3 class="akhir">Rp. <?php echo $row['Harga'] ?></h3>
                 <!-- Button trigger modal -->
-                <button type="button" class="btn-tombol-beli" data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $row['id']; ?>">Beli</button>
+                <button type="button" class="btn-tombol-beli" data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $row['id']; ?>">Lihat</button>
               </div>
             </div>
           </div>
@@ -188,25 +190,28 @@ include("../config/header.php");
                   <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                  <div class="card">
-                    <div class="card-body">
-                      <h6 class="card-title"><?php echo $row['Nama_produk'] ?></h6>
-                      <h6><?php echo $row['Kuota_utama'] ?></h6>
-                      <h6><?php echo $row['Kuota_local'] ?></h6>
-                      <h6><?php echo $row['Kuota_malam'] ?></h6>
-                      <h6><?php echo $row['Kuota_video'] ?></h6>
-                      <h6><?php echo $row['Kuota_sosmed'] ?></h6>
-                      <h6><?php echo $row['Kuota_game'] ?></h6>
-                      <br />
-                      <h3 class="akhir">Rp. <?php echo $row['Harga'] ?></h3>
+                <form action="../Pembayaran/proses-pembayaran-axis.php" method="POST">
+                  <input type="hidden" value="<?php echo $row['id'] ?>" name="id">
+                  <div class="modal-body">
+                    <div class="card">
+                      <div class="card-body">
+                        <h6 class="card-title"><?php echo $row['Nama_produk'] ?></h6>
+                        <h6><?php echo $row['Kuota_utama'] ?></h6>
+                        <h6><?php echo $row['Kuota_local'] ?></h6>
+                        <h6><?php echo $row['Kuota_malam'] ?></h6>
+                        <h6><?php echo $row['Kuota_video'] ?></h6>
+                        <h6><?php echo $row['Kuota_sosmed'] ?></h6>
+                        <h6><?php echo $row['Kuota_game'] ?></h6>
+                        <br />
+                        <h3 class="akhir">Rp. <?php echo $row['Harga'] ?></h3>
+                      </div>
                     </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn-tombol-beli" data-bs-dismiss="modal">Batal</button>
+                      <button type="submit" name="submit" class="btn-tombol-beli">Beli</button>
+                    </div>
+        </form>
                   </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn-tombol-beli" data-bs-dismiss="modal">Batal</button>
-                    <button type="button" class="btn-tombol-beli">Tambahkan Ke Keranjang</button>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
