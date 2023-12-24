@@ -20,7 +20,7 @@ Sebelum memulai proses instalasi dan menjalankan proyek web Web-Pulsa-All-Operat
 1. Siapkan folder penyimpanan proyek di dalam direktori htdocs di XAMPP.
 2. Lakukan cloning repositori dari GitHub menggunakan Git Bash dengan perintah
    git clone `https://github.com/Dimas391/web-pulsa-paket-all-operator.git`, atau alternatifnya, Anda dapat menggunakan opsi "download zip" pada halaman GitHub repositori yang bersangkutan.
-4. Buka http://localhost/php/myadmin untuk masuk ke phpmyadmin lalu nuat database baru dengan nama paket di phpMyAdmin.
+4. Buka http://localhost/phpMyAdmin untuk masuk ke phpmyadmin lalu nuat database baru dengan nama paket di phpMyAdmin.
 5. Kemudian, impor file `paket.sql` ke dalam database tersebut.
 7. Kemudian buka browser pada komputer masing-masing
 5. kemudian Akses localhost Web-Pulsa-All-Operator-master.
