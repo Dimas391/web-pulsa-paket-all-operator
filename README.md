@@ -30,4 +30,4 @@ Sebelum memulai proses instalasi dan menjalankan proyek web Web-Pulsa-All-Operat
 2. setelah mengakses localhost/Web-Pulsa-All-Operator-master/ maka langsung diarahkan ke halaman login untuk jika belum mempunyai akun untuk login sebagai pelanggan lakukan daftar akun terlebih dahulu dan untuk masuk ke halaman admin bisa mengisi username = admin, password = 123
 
 ## Berikut link video testing web kami
-[![Klik untuk menonton video](https://drive.google.com/file/d/1SIVvqGd2JPdkC2HFTyFogEcJ2Jyo0YYm/view?usp=sharing)](https://drive.google.com/file/d/1SIVvqGd2JPdkC2HFTyFogEcJ2Jyo0YYm/view?usp=sharing)
+[!(https://drive.google.com/file/d/1SIVvqGd2JPdkC2HFTyFogEcJ2Jyo0YYm/view?usp=sharing)](https://drive.google.com/file/d/1SIVvqGd2JPdkC2HFTyFogEcJ2Jyo0YYm/view?usp=sharing)
