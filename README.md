@@ -32,7 +32,4 @@ Sebelum memulai proses instalasi dan menjalankan proyek web Web-Pulsa-All-Operat
 ## Berikut link video testing web kami
 [(https://drive.google.com/file/d/1SIVvqGd2JPdkC2HFTyFogEcJ2Jyo0YYm/view?usp=sharing)](https://drive.google.com/file/d/1SIVvqGd2JPdkC2HFTyFogEcJ2Jyo0YYm/view?usp=sharing)
 
-[![Klik untuk menonton video](https://github.com/Dimas391/web-pulsa-paket-all-operator/assets/video_testing_Pulsa_Paket.mp4)](https://raw.githubusercontent.com/Dimas391/web-pulsa-paket-all-operator/assets/video_testing_Pulsa_Paket.mp4)
-
-
 
